@@ -1,0 +1,181 @@
+\hypertarget{mycode_8cpp}{\section{mycode.\-cpp File Reference}
+\label{mycode_8cpp}\index{mycode.\-cpp@{mycode.\-cpp}}
+}
+
+
+The implemetation of the base part of the second mashgraph task and the mechanism of adding extra part.  
+
+
+{\ttfamily \#include $<$string$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include $<$fstream$>$}\\*
+{\ttfamily \#include $<$cassert$>$}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$tuple$>$}\\*
+{\ttfamily \#include $<$cmath$>$}\\*
+{\ttfamily \#include $<$xmmintrin.\-h$>$}\\*
+{\ttfamily \#include $<$immintrin.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}matrix.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mycode.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Easy\-B\-M\-P.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}dop.\-h\char`\"{}}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{mycode_8cpp_a4dd906619c5d80de90343e632bb31345}{\#define \hyperlink{mycode_8cpp_a4dd906619c5d80de90343e632bb31345}{D\-O\-P}~true}\label{mycode_8cpp_a4dd906619c5d80de90343e632bb31345}
+
+\begin{DoxyCompactList}\small\item\em The macros indicating usage of the extra part of the mashgraph task. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_matrix}{G\-Img} \hyperlink{mycode_8cpp_a7359fc03c50cd3954a42f47f974dc469}{makegray} (B\-M\-P $\ast$m)
+\item 
+vector$<$ float $>$ \hyperlink{mycode_8cpp_a01022a402a859e09ed2bb0ae3b88ae9b}{cellhog} (\hyperlink{class_matrix}{G\-Img} \&mod, \hyperlink{class_matrix}{G\-Img} \&arg)
+\item 
+void \hyperlink{mycode_8cpp_aec92cdf4db0fce10e0c7bc32c05c1f1b}{normalization} (vector$<$ float $>$ \&hog, uint place)
+\item 
+void \hyperlink{mycode_8cpp_a990449c59faf95541599ff197ceda796}{ssenormalization} (vector$<$ float $>$ \&hog, uint place)
+\item 
+void \hyperlink{mycode_8cpp_a9997fd6ff13e3ada8b415052972cf17d}{checkconstants} (bool sse)
+\item 
+vector$<$ float $>$ \hyperlink{mycode_8cpp_a845987e96a773cd6890701a05e8938fe}{myhog} (B\-M\-P $\ast$m)
+\item 
+pair$<$ \hyperlink{class_matrix}{G\-Img}, \hyperlink{class_matrix}{G\-Img} $>$ \hyperlink{mycode_8cpp_a8329cdf91c6f2409b5af537793c6d0da}{sobelfilter} (\hyperlink{class_matrix}{G\-Img} \&src)
+\item 
+pair$<$ \hyperlink{class_matrix}{G\-Img}, \hyperlink{class_matrix}{G\-Img} $>$ \hyperlink{mycode_8cpp_ada2e157b06690d85107dbd2aafb282a4}{ssesobelfilter} (\hyperlink{class_matrix}{G\-Img} \&src)
+\item 
+\hypertarget{mycode_8cpp_a9dc870284e0dc71d7eec0922066ddbf6}{vector$<$ float $>$ {\bfseries counthog} (pair$<$ \hyperlink{class_matrix}{G\-Img}, \hyperlink{class_matrix}{G\-Img} $>$ got)}\label{mycode_8cpp_a9dc870284e0dc71d7eec0922066ddbf6}
+
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{mycode_8cpp_a75fed763e643482e45043293b6db3366}{bool \hyperlink{mycode_8cpp_a75fed763e643482e45043293b6db3366}{sseconstant} = false}\label{mycode_8cpp_a75fed763e643482e45043293b6db3366}
+
+\begin{DoxyCompactList}\small\item\em Usage of S\-S\-E. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The implemetation of the base part of the second mashgraph task and the mechanism of adding extra part. 
+
+\subsection{Function Documentation}
+\hypertarget{mycode_8cpp_a01022a402a859e09ed2bb0ae3b88ae9b}{\index{mycode.\-cpp@{mycode.\-cpp}!cellhog@{cellhog}}
+\index{cellhog@{cellhog}!mycode.cpp@{mycode.\-cpp}}
+\subsubsection[{cellhog}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ float $>$ cellhog (
+\begin{DoxyParamCaption}
+\item[{{\bf G\-Img} \&}]{mod, }
+\item[{{\bf G\-Img} \&}]{arg}
+\end{DoxyParamCaption}
+)}}\label{mycode_8cpp_a01022a402a859e09ed2bb0ae3b88ae9b}
+Counts features for each cell of the image. Sorts arguments of gradients and accumulate corresponding modules of gradients 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em mod} & Reference to the cell of the matrix with modules of gradients \\
+\hline
+\mbox{\tt in}  & {\em arg} & Reference to the cell of the matrix with arguments of gradients \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector with count features for the cell of the picture. 
+\end{DoxyReturn}
+\hypertarget{mycode_8cpp_a9997fd6ff13e3ada8b415052972cf17d}{\index{mycode.\-cpp@{mycode.\-cpp}!checkconstants@{checkconstants}}
+\index{checkconstants@{checkconstants}!mycode.cpp@{mycode.\-cpp}}
+\subsubsection[{checkconstants}]{\setlength{\rightskip}{0pt plus 5cm}void checkconstants (
+\begin{DoxyParamCaption}
+\item[{bool}]{sse}
+\end{DoxyParamCaption}
+)}}\label{mycode_8cpp_a9997fd6ff13e3ada8b415052972cf17d}
+Decides if the constants are correct and sets the flag sseconstant. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em sse} & carries the flag value \\
+\hline
+\end{DoxyParams}
+\hypertarget{mycode_8cpp_a7359fc03c50cd3954a42f47f974dc469}{\index{mycode.\-cpp@{mycode.\-cpp}!makegray@{makegray}}
+\index{makegray@{makegray}!mycode.cpp@{mycode.\-cpp}}
+\subsubsection[{makegray}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\-Img} makegray (
+\begin{DoxyParamCaption}
+\item[{B\-M\-P $\ast$}]{m}
+\end{DoxyParamCaption}
+)}}\label{mycode_8cpp_a7359fc03c50cd3954a42f47f974dc469}
+Converts coloured B\-M\-P picture into the grey one. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em m} & Pointer to the image \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_matrix}{Matrix} with floats. Each float number is the grey variant of the pixel 
+\end{DoxyReturn}
+\hypertarget{mycode_8cpp_a845987e96a773cd6890701a05e8938fe}{\index{mycode.\-cpp@{mycode.\-cpp}!myhog@{myhog}}
+\index{myhog@{myhog}!mycode.cpp@{mycode.\-cpp}}
+\subsubsection[{myhog}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$float$>$ myhog (
+\begin{DoxyParamCaption}
+\item[{B\-M\-P $\ast$}]{m}
+\end{DoxyParamCaption}
+)}}\label{mycode_8cpp_a845987e96a773cd6890701a05e8938fe}
+Rules the process of counting features. Make all working step by step. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em m} & Pointer to the image we got \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns ready vector of features 
+\end{DoxyReturn}
+\hypertarget{mycode_8cpp_aec92cdf4db0fce10e0c7bc32c05c1f1b}{\index{mycode.\-cpp@{mycode.\-cpp}!normalization@{normalization}}
+\index{normalization@{normalization}!mycode.cpp@{mycode.\-cpp}}
+\subsubsection[{normalization}]{\setlength{\rightskip}{0pt plus 5cm}void normalization (
+\begin{DoxyParamCaption}
+\item[{vector$<$ float $>$ \&}]{hog, }
+\item[{uint}]{place}
+\end{DoxyParamCaption}
+)}}\label{mycode_8cpp_aec92cdf4db0fce10e0c7bc32c05c1f1b}
+Makes normalization of the vector with features of one cell. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em hog} & Reference to the vector of features, considering the part to be normalized \\
+\hline
+\mbox{\tt in}  & {\em place} & The place in the hog where the normalization is to start \\
+\hline
+\end{DoxyParams}
+\hypertarget{mycode_8cpp_a8329cdf91c6f2409b5af537793c6d0da}{\index{mycode.\-cpp@{mycode.\-cpp}!sobelfilter@{sobelfilter}}
+\index{sobelfilter@{sobelfilter}!mycode.cpp@{mycode.\-cpp}}
+\subsubsection[{sobelfilter}]{\setlength{\rightskip}{0pt plus 5cm}pair$<${\bf G\-Img}, {\bf G\-Img}$>$ sobelfilter (
+\begin{DoxyParamCaption}
+\item[{{\bf G\-Img} \&}]{src}
+\end{DoxyParamCaption}
+)}}\label{mycode_8cpp_a8329cdf91c6f2409b5af537793c6d0da}
+Counts gradient 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em src} & Reference to the matrix of floats made by convering coloured image into grey one. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns pair of matrixes. The first one is the matrix of modules of gradient of pixels. The second one is the matrix of arguments of gradient of pixels. 
+\end{DoxyReturn}
+\hypertarget{mycode_8cpp_a990449c59faf95541599ff197ceda796}{\index{mycode.\-cpp@{mycode.\-cpp}!ssenormalization@{ssenormalization}}
+\index{ssenormalization@{ssenormalization}!mycode.cpp@{mycode.\-cpp}}
+\subsubsection[{ssenormalization}]{\setlength{\rightskip}{0pt plus 5cm}void ssenormalization (
+\begin{DoxyParamCaption}
+\item[{vector$<$ float $>$ \&}]{hog, }
+\item[{uint}]{place}
+\end{DoxyParamCaption}
+)}}\label{mycode_8cpp_a990449c59faf95541599ff197ceda796}
+Makes normalization of the vector with features of one cell using S\-S\-E 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em hog} & Reference to the vector of features, considering the part to be normalized \\
+\hline
+\mbox{\tt in}  & {\em place} & The place in the hog where the normalization is to start \\
+\hline
+\end{DoxyParams}
+\hypertarget{mycode_8cpp_ada2e157b06690d85107dbd2aafb282a4}{\index{mycode.\-cpp@{mycode.\-cpp}!ssesobelfilter@{ssesobelfilter}}
+\index{ssesobelfilter@{ssesobelfilter}!mycode.cpp@{mycode.\-cpp}}
+\subsubsection[{ssesobelfilter}]{\setlength{\rightskip}{0pt plus 5cm}pair$<${\bf G\-Img}, {\bf G\-Img}$>$ ssesobelfilter (
+\begin{DoxyParamCaption}
+\item[{{\bf G\-Img} \&}]{src}
+\end{DoxyParamCaption}
+)}}\label{mycode_8cpp_ada2e157b06690d85107dbd2aafb282a4}
+Counts gradient using S\-S\-E 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em src} & Reference to the matrix of floats made by convering coloured image into grey one. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns pair of matrixes. The first one is the matrix of modules of gradient of pixels. The second one is the matrix of arguments of gradient of pixels. 
+\end{DoxyReturn}

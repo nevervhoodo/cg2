@@ -1,0 +1,207 @@
+\hypertarget{dop_8cpp}{\section{dop.\-cpp File Reference}
+\label{dop_8cpp}\index{dop.\-cpp@{dop.\-cpp}}
+}
+
+
+The implemetation of the extra part of the second mashgraph task.  
+
+
+{\ttfamily \#include $<$string$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include $<$fstream$>$}\\*
+{\ttfamily \#include $<$cassert$>$}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$tuple$>$}\\*
+{\ttfamily \#include $<$cmath$>$}\\*
+{\ttfamily \#include $<$xmmintrin.\-h$>$}\\*
+{\ttfamily \#include $<$immintrin.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}matrix.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mycode.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}dop.\-h\char`\"{}}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{dop_8cpp_af814e8d461270fd0713e9707ca4290f2}{\#define \hyperlink{dop_8cpp_af814e8d461270fd0713e9707ca4290f2}{N\-P\-A\-R\-T\-S}~2}\label{dop_8cpp_af814e8d461270fd0713e9707ca4290f2}
+
+\begin{DoxyCompactList}\small\item\em The number of vertical and horizontal cells of the picture for piramid function. \end{DoxyCompactList}\item 
+\hypertarget{dop_8cpp_a5d0715c39fa2cd2e8754251361977d2f}{\#define \hyperlink{dop_8cpp_a5d0715c39fa2cd2e8754251361977d2f}{P\-I\-R\-A\-M\-I\-D\-P\-A\-R\-T\-S}~(pow(\hyperlink{dop_8cpp_af814e8d461270fd0713e9707ca4290f2}{N\-P\-A\-R\-T\-S},2)+1)}\label{dop_8cpp_a5d0715c39fa2cd2e8754251361977d2f}
+
+\begin{DoxyCompactList}\small\item\em The total number of vectors counted in piramid function. \end{DoxyCompactList}\item 
+\hypertarget{dop_8cpp_a434e14ce18678b3664e73d2d51951eb3}{\#define \hyperlink{dop_8cpp_a434e14ce18678b3664e73d2d51951eb3}{S\-U\-B\-H\-O\-G\-S\-I\-Z\-E}~(\hyperlink{mycode_8h_af6bc052e7a74799c9816534cd8d0b49f}{N\-A\-R\-G\-S}$\ast$\hyperlink{mycode_8h_a47736fb8515a7383c5db94b41eead78a}{P\-A\-R\-T\-S})}\label{dop_8cpp_a434e14ce18678b3664e73d2d51951eb3}
+
+\begin{DoxyCompactList}\small\item\em The size of each vector counted in piramid function. \end{DoxyCompactList}\item 
+\hypertarget{dop_8cpp_ad683425316571fc55dcea736f6011316}{\#define \hyperlink{dop_8cpp_ad683425316571fc55dcea736f6011316}{N\-C\-O\-L\-O\-R\-S}~3}\label{dop_8cpp_ad683425316571fc55dcea736f6011316}
+
+\begin{DoxyCompactList}\small\item\em The number of colors channels of the picture. \end{DoxyCompactList}\item 
+\hypertarget{dop_8cpp_aec301eadad66124584ad6d73e8edbf31}{\#define \hyperlink{dop_8cpp_aec301eadad66124584ad6d73e8edbf31}{X\-Y\-C\-O\-L\-O\-R\-S}~8}\label{dop_8cpp_aec301eadad66124584ad6d73e8edbf31}
+
+\begin{DoxyCompactList}\small\item\em The number of vertical and horizontal cells of the picture for colorfeature function. \end{DoxyCompactList}\item 
+\hypertarget{dop_8cpp_a87082926fd5f6d656fd8f88152d9eb28}{\#define \hyperlink{dop_8cpp_a87082926fd5f6d656fd8f88152d9eb28}{N\-C\-O\-L\-O\-R\-C\-E\-L\-L\-S}~(pow(\hyperlink{dop_8cpp_aec301eadad66124584ad6d73e8edbf31}{X\-Y\-C\-O\-L\-O\-R\-S},2)+1)}\label{dop_8cpp_a87082926fd5f6d656fd8f88152d9eb28}
+
+\begin{DoxyCompactList}\small\item\em The total number of cells in colorfeature function. \end{DoxyCompactList}\item 
+\hypertarget{dop_8cpp_a6f936d61dcde730da4347f860fa8ce95}{\#define \hyperlink{dop_8cpp_a6f936d61dcde730da4347f860fa8ce95}{L\-\_\-\-C\-O\-N\-S\-T}~0.\-5}\label{dop_8cpp_a6f936d61dcde730da4347f860fa8ce95}
+
+\begin{DoxyCompactList}\small\item\em One constant for the unlinearsvmkernel. Can be from 0.\-25 to 0.\-50. \end{DoxyCompactList}\item 
+\hypertarget{dop_8cpp_a0a10f5ff9f22846897644f5a6d8bff49}{\#define \hyperlink{dop_8cpp_a0a10f5ff9f22846897644f5a6d8bff49}{N\-\_\-\-C\-O\-N\-S\-T}~2}\label{dop_8cpp_a0a10f5ff9f22846897644f5a6d8bff49}
+
+\begin{DoxyCompactList}\small\item\em Anothe constant for the unlinearsvmkernel. Can be 1 or 2. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+tuple$<$ float, float, float $>$ \hyperlink{dop_8cpp_a026d1bd2fc26cb0ced54b7ffb79a5ca1}{countcolorfeatures} (B\-M\-P $\ast$img, uint y, uint x, uint n\-\_\-rows, uint n\-\_\-cols)
+\item 
+float \hyperlink{dop_8cpp_a2a70d1d71dfffd1e7475ed0650c3be5d}{mysech} (float x)
+\item 
+\-\_\-\-\_\-m128 \hyperlink{dop_8cpp_a3d5df494a3d32351f9ed47a24a28e3ca}{ssemysech} (\-\_\-\-\_\-m128 x)
+\item 
+void \hyperlink{dop_8cpp_a2ad732630f2665f9f4404cec637b8813}{setdopssefeature} (bool sse)
+\item 
+vector$<$ float $>$ \hyperlink{dop_8cpp_a10901fc7716198de2e003ddb4c918802}{piramid} (\hyperlink{class_matrix}{G\-Img} \&img)
+\item 
+vector$<$ float $>$ \hyperlink{dop_8cpp_a6af5688c03787a6b2aef1690f8f3f074}{colorfeatures} (B\-M\-P $\ast$bmp)
+\item 
+vector$<$ float $>$ \hyperlink{dop_8cpp_a618f8cc9cbf4a1a317a82855a9fa131e}{unlinearsvmkernel} (vector$<$ float $>$ \&srchog)
+\item 
+vector$<$ float $>$ \hyperlink{dop_8cpp_abca6a7e41d03651f9e6557ef2abc6dd0}{sseunlinearsvmkernel} (vector$<$ float $>$ \&srchog)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{dop_8cpp_a33f8d01698b8cfbcc9c4428541ec9e4f}{bool \hyperlink{dop_8cpp_a33f8d01698b8cfbcc9c4428541ec9e4f}{ssedopconstant} = false}\label{dop_8cpp_a33f8d01698b8cfbcc9c4428541ec9e4f}
+
+\begin{DoxyCompactList}\small\item\em Usage of S\-S\-E in extra part of the task. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The implemetation of the extra part of the second mashgraph task. 
+
+\subsection{Function Documentation}
+\hypertarget{dop_8cpp_a6af5688c03787a6b2aef1690f8f3f074}{\index{dop.\-cpp@{dop.\-cpp}!colorfeatures@{colorfeatures}}
+\index{colorfeatures@{colorfeatures}!dop.cpp@{dop.\-cpp}}
+\subsubsection[{colorfeatures}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$float$>$ colorfeatures (
+\begin{DoxyParamCaption}
+\item[{B\-M\-P $\ast$}]{bmp}
+\end{DoxyParamCaption}
+)}}\label{dop_8cpp_a6af5688c03787a6b2aef1690f8f3f074}
+Counts color features of the image 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em bmp} & Pointer to the processed image \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector with features 
+\end{DoxyReturn}
+\hypertarget{dop_8cpp_a026d1bd2fc26cb0ced54b7ffb79a5ca1}{\index{dop.\-cpp@{dop.\-cpp}!countcolorfeatures@{countcolorfeatures}}
+\index{countcolorfeatures@{countcolorfeatures}!dop.cpp@{dop.\-cpp}}
+\subsubsection[{countcolorfeatures}]{\setlength{\rightskip}{0pt plus 5cm}tuple$<$ float, float, float $>$ countcolorfeatures (
+\begin{DoxyParamCaption}
+\item[{B\-M\-P $\ast$}]{img, }
+\item[{uint}]{y, }
+\item[{uint}]{x, }
+\item[{uint}]{n\-\_\-rows, }
+\item[{uint}]{n\-\_\-cols}
+\end{DoxyParamCaption}
+)}}\label{dop_8cpp_a026d1bd2fc26cb0ced54b7ffb79a5ca1}
+Counts color features for each cell of the picture 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em img} & Pointer to the image \\
+\hline
+\mbox{\tt in}  & {\em y} & Y coordinate of the cell to be processed \\
+\hline
+\mbox{\tt in}  & {\em x} & X coordinate of the cell to be processed \\
+\hline
+\mbox{\tt in}  & {\em n\-\_\-rows} & Horizontal size of the cell \\
+\hline
+\mbox{\tt in}  & {\em n\-\_\-colss} & Vertical size of the cell \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Tuple of the R,G,B features of the cell 
+\end{DoxyReturn}
+\hypertarget{dop_8cpp_a2a70d1d71dfffd1e7475ed0650c3be5d}{\index{dop.\-cpp@{dop.\-cpp}!mysech@{mysech}}
+\index{mysech@{mysech}!dop.cpp@{dop.\-cpp}}
+\subsubsection[{mysech}]{\setlength{\rightskip}{0pt plus 5cm}float mysech (
+\begin{DoxyParamCaption}
+\item[{float}]{x}
+\end{DoxyParamCaption}
+)}}\label{dop_8cpp_a2a70d1d71dfffd1e7475ed0650c3be5d}
+Counts sech 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em Input} & float \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result 
+\end{DoxyReturn}
+\hypertarget{dop_8cpp_a10901fc7716198de2e003ddb4c918802}{\index{dop.\-cpp@{dop.\-cpp}!piramid@{piramid}}
+\index{piramid@{piramid}!dop.cpp@{dop.\-cpp}}
+\subsubsection[{piramid}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$float$>$ piramid (
+\begin{DoxyParamCaption}
+\item[{{\bf G\-Img} \&}]{img}
+\end{DoxyParamCaption}
+)}}\label{dop_8cpp_a10901fc7716198de2e003ddb4c918802}
+Counts features five times. The first one for the entire picture Then picture is devided into four cells of the same size. The next four times function counts features for four cells of the picture. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em img} & Reference to the grey image which is the matrix of floats \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the extended vector with features. Made by concatination of five vectors counted by the function 
+\end{DoxyReturn}
+\hypertarget{dop_8cpp_a2ad732630f2665f9f4404cec637b8813}{\index{dop.\-cpp@{dop.\-cpp}!setdopssefeature@{setdopssefeature}}
+\index{setdopssefeature@{setdopssefeature}!dop.cpp@{dop.\-cpp}}
+\subsubsection[{setdopssefeature}]{\setlength{\rightskip}{0pt plus 5cm}void setdopssefeature (
+\begin{DoxyParamCaption}
+\item[{bool}]{sse}
+\end{DoxyParamCaption}
+)}}\label{dop_8cpp_a2ad732630f2665f9f4404cec637b8813}
+Sets the flag ssedopconstant. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em sse} & carries the flag value. \\
+\hline
+\end{DoxyParams}
+\hypertarget{dop_8cpp_a3d5df494a3d32351f9ed47a24a28e3ca}{\index{dop.\-cpp@{dop.\-cpp}!ssemysech@{ssemysech}}
+\index{ssemysech@{ssemysech}!dop.cpp@{dop.\-cpp}}
+\subsubsection[{ssemysech}]{\setlength{\rightskip}{0pt plus 5cm}\-\_\-\-\_\-m128 ssemysech (
+\begin{DoxyParamCaption}
+\item[{\-\_\-\-\_\-m128}]{x}
+\end{DoxyParamCaption}
+)}}\label{dop_8cpp_a3d5df494a3d32351f9ed47a24a28e3ca}
+Counts sech for S\-S\-E variable 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em Input} & S\-S\-E float variable \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result is the same type 
+\end{DoxyReturn}
+\hypertarget{dop_8cpp_abca6a7e41d03651f9e6557ef2abc6dd0}{\index{dop.\-cpp@{dop.\-cpp}!sseunlinearsvmkernel@{sseunlinearsvmkernel}}
+\index{sseunlinearsvmkernel@{sseunlinearsvmkernel}!dop.cpp@{dop.\-cpp}}
+\subsubsection[{sseunlinearsvmkernel}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$float$>$ sseunlinearsvmkernel (
+\begin{DoxyParamCaption}
+\item[{vector$<$ float $>$ \&}]{srchog}
+\end{DoxyParamCaption}
+)}}\label{dop_8cpp_abca6a7e41d03651f9e6557ef2abc6dd0}
+Recounts vector with features for the unlinear S\-V\-M kernel using S\-S\-E. Just replaces each float feature with the several another floats got after using some strange formulas. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em srchog} & Vector of source features. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of features ready for unlinear S\-V\-M kernel. 
+\end{DoxyReturn}
+\hypertarget{dop_8cpp_a618f8cc9cbf4a1a317a82855a9fa131e}{\index{dop.\-cpp@{dop.\-cpp}!unlinearsvmkernel@{unlinearsvmkernel}}
+\index{unlinearsvmkernel@{unlinearsvmkernel}!dop.cpp@{dop.\-cpp}}
+\subsubsection[{unlinearsvmkernel}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$float$>$ unlinearsvmkernel (
+\begin{DoxyParamCaption}
+\item[{vector$<$ float $>$ \&}]{srchog}
+\end{DoxyParamCaption}
+)}}\label{dop_8cpp_a618f8cc9cbf4a1a317a82855a9fa131e}
+Recounts vector with features for the unlinear S\-V\-M kernel. Just replaces each float feature with the several another floats got after using some strange formulas. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em srchog} & Vector of source features. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of features ready for unlinear S\-V\-M kernel. 
+\end{DoxyReturn}

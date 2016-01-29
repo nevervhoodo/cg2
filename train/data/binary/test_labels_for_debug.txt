@@ -1,0 +1,10 @@
+test/airplanes/image_0009.bmp 1
+test/airplanes/image_0010.bmp 1
+test/airplanes/image_0020.bmp 1
+test/airplanes/image_0048.bmp 1
+test/airplanes/image_0052.bmp 1
+test/background/image_0004.bmp 2
+test/background/image_0017.bmp 2
+test/background/image_0019.bmp 2
+test/background/image_0024.bmp 2
+test/background/image_0028.bmp 2

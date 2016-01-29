@@ -1,0 +1,521 @@
+\hypertarget{class_command_line_processing_1_1_argv_parser}{\section{Command\-Line\-Processing\-:\-:Argv\-Parser Class Reference}
+\label{class_command_line_processing_1_1_argv_parser}\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+}
+
+
+{\ttfamily \#include $<$argvparser.\-h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ {\bfseries No\-Option\-Attribute} = 0, 
+{\bfseries Option\-Requires\-Value} = 1, 
+{\bfseries Option\-Required} = 2
+ \}
+\item 
+enum \{ \\*
+{\bfseries No\-Parser\-Error} = 0, 
+{\bfseries Parser\-Unknown\-Option} = 1, 
+{\bfseries Parser\-Missing\-Value} = 2, 
+{\bfseries Parser\-Option\-After\-Argument} = 4, 
+\\*
+{\bfseries Parser\-Malformed\-Multiple\-Short\-Option} = 8, 
+{\bfseries Parser\-Required\-Option\-Missing} = 16, 
+{\bfseries Parser\-Help\-Requested} = 32
+ \}
+\item 
+enum \{ {\bfseries No\-Option\-Attribute} = 0, 
+{\bfseries Option\-Requires\-Value} = 1, 
+{\bfseries Option\-Required} = 2
+ \}
+\item 
+enum \{ \\*
+{\bfseries No\-Parser\-Error} = 0, 
+{\bfseries Parser\-Unknown\-Option} = 1, 
+{\bfseries Parser\-Missing\-Value} = 2, 
+{\bfseries Parser\-Option\-After\-Argument} = 4, 
+\\*
+{\bfseries Parser\-Malformed\-Multiple\-Short\-Option} = 8, 
+{\bfseries Parser\-Required\-Option\-Missing} = 16, 
+{\bfseries Parser\-Help\-Requested} = 32
+ \}
+\item 
+\hypertarget{class_command_line_processing_1_1_argv_parser_a09e98f88e306ec9a2fb780f05981a857}{typedef int {\bfseries Option\-Attributes}}\label{class_command_line_processing_1_1_argv_parser_a09e98f88e306ec9a2fb780f05981a857}
+
+\item 
+\hypertarget{class_command_line_processing_1_1_argv_parser_a2b812f40e18434aa89eb826ff06535ce}{typedef int {\bfseries Parser\-Results}}\label{class_command_line_processing_1_1_argv_parser_a2b812f40e18434aa89eb826ff06535ce}
+
+\item 
+\hypertarget{class_command_line_processing_1_1_argv_parser_a2c9d8a1f76332abcee2cf7a81cc03fb7}{typedef std\-::map$<$ std\-::string, \\*
+unsigned int $>$ {\bfseries String2\-Key\-Map}}\label{class_command_line_processing_1_1_argv_parser_a2c9d8a1f76332abcee2cf7a81cc03fb7}
+
+\item 
+\hypertarget{class_command_line_processing_1_1_argv_parser_aa7a92cef773f3c498d09221598400f03}{typedef std\-::map$<$ unsigned int, \\*
+Option\-Attributes $>$ {\bfseries Key2\-Attribute\-Map}}\label{class_command_line_processing_1_1_argv_parser_aa7a92cef773f3c498d09221598400f03}
+
+\item 
+\hypertarget{class_command_line_processing_1_1_argv_parser_aadf3e0f770d7e3ecc9cf0cd0ae0cc117}{typedef std\-::map$<$ unsigned int, \\*
+std\-::string $>$ {\bfseries Key2\-String\-Map}}\label{class_command_line_processing_1_1_argv_parser_aadf3e0f770d7e3ecc9cf0cd0ae0cc117}
+
+\item 
+\hypertarget{class_command_line_processing_1_1_argv_parser_a66ef6261aaa6f4255e15d342f885d85b}{typedef std\-::vector$<$ std\-::string $>$ {\bfseries Argument\-Container}}\label{class_command_line_processing_1_1_argv_parser_a66ef6261aaa6f4255e15d342f885d85b}
+
+\item 
+\hypertarget{class_command_line_processing_1_1_argv_parser_a09e98f88e306ec9a2fb780f05981a857}{typedef int {\bfseries Option\-Attributes}}\label{class_command_line_processing_1_1_argv_parser_a09e98f88e306ec9a2fb780f05981a857}
+
+\item 
+\hypertarget{class_command_line_processing_1_1_argv_parser_a2b812f40e18434aa89eb826ff06535ce}{typedef int {\bfseries Parser\-Results}}\label{class_command_line_processing_1_1_argv_parser_a2b812f40e18434aa89eb826ff06535ce}
+
+\item 
+\hypertarget{class_command_line_processing_1_1_argv_parser_a2c9d8a1f76332abcee2cf7a81cc03fb7}{typedef std\-::map$<$ std\-::string, \\*
+unsigned int $>$ {\bfseries String2\-Key\-Map}}\label{class_command_line_processing_1_1_argv_parser_a2c9d8a1f76332abcee2cf7a81cc03fb7}
+
+\item 
+\hypertarget{class_command_line_processing_1_1_argv_parser_aa7a92cef773f3c498d09221598400f03}{typedef std\-::map$<$ unsigned int, \\*
+Option\-Attributes $>$ {\bfseries Key2\-Attribute\-Map}}\label{class_command_line_processing_1_1_argv_parser_aa7a92cef773f3c498d09221598400f03}
+
+\item 
+\hypertarget{class_command_line_processing_1_1_argv_parser_aadf3e0f770d7e3ecc9cf0cd0ae0cc117}{typedef std\-::map$<$ unsigned int, \\*
+std\-::string $>$ {\bfseries Key2\-String\-Map}}\label{class_command_line_processing_1_1_argv_parser_aadf3e0f770d7e3ecc9cf0cd0ae0cc117}
+
+\item 
+\hypertarget{class_command_line_processing_1_1_argv_parser_a66ef6261aaa6f4255e15d342f885d85b}{typedef std\-::vector$<$ std\-::string $>$ {\bfseries Argument\-Container}}\label{class_command_line_processing_1_1_argv_parser_a66ef6261aaa6f4255e15d342f885d85b}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_command_line_processing_1_1_argv_parser_ab0194879d739c6e14afaa5c810f2bcf2}{define\-Option} (const std\-::string \&\-\_\-name, const std\-::string \&\-\_\-description=std\-::string(), Option\-Attributes \-\_\-attributes=No\-Option\-Attribute)
+\item 
+bool \hyperlink{class_command_line_processing_1_1_argv_parser_afd327b1fa074f9054180ffe67cb39591}{define\-Option\-Alternative} (const std\-::string \&\-\_\-original, const std\-::string \&\-\_\-alternative)
+\item 
+bool \hyperlink{class_command_line_processing_1_1_argv_parser_aff6f41358d5e0f4f2a3eb83069a1e4eb}{is\-Defined\-Option} (const std\-::string \&\-\_\-name) const 
+\item 
+bool \hyperlink{class_command_line_processing_1_1_argv_parser_aee7ea44fd5f1caac3f96915a483fbe77}{found\-Option} (const std\-::string \&\-\_\-name) const 
+\item 
+bool \hyperlink{class_command_line_processing_1_1_argv_parser_a3c8f22197ce39d35655195b6d34ee2e1}{set\-Help\-Option} (const std\-::string \&\-\_\-longname=\char`\"{}h\char`\"{}, const std\-::string \&\-\_\-shortname=\char`\"{}help\char`\"{}, const std\-::string \&\-\_\-descr=\char`\"{}\char`\"{})
+\item 
+unsigned int \hyperlink{class_command_line_processing_1_1_argv_parser_ac982ebf837b576898661c0bfeeb487ec}{arguments} () const 
+\item 
+std\-::string \hyperlink{class_command_line_processing_1_1_argv_parser_a1cbefd19d4c8c62a203d1a1922960331}{argument} (unsigned int \-\_\-number) const 
+\item 
+const std\-::vector$<$ std\-::string $>$ \& \hyperlink{class_command_line_processing_1_1_argv_parser_a59bfb6a90912a429100a6e05a6544b36}{all\-Arguments} () const 
+\item 
+void \hyperlink{class_command_line_processing_1_1_argv_parser_ad0150ccee56870979c638be0dbb1ceb9}{add\-Error\-Code} (int \-\_\-code, const std\-::string \&\-\_\-descr=\char`\"{}\char`\"{})
+\item 
+void \hyperlink{class_command_line_processing_1_1_argv_parser_a2e94bfc66abdfc54fb506c75c3ce919c}{set\-Introductory\-Description} (const std\-::string \&\-\_\-descr)
+\item 
+Parser\-Results \hyperlink{class_command_line_processing_1_1_argv_parser_a1a3306fa666ee4619ecd5dfcfb2bd7ba}{parse} (int \-\_\-argc, char $\ast$$\ast$\-\_\-argv)
+\item 
+std\-::string \hyperlink{class_command_line_processing_1_1_argv_parser_a333a58fc95f0ff2a7f0bda687ab8295a}{option\-Value} (const std\-::string \&\-\_\-option) const 
+\item 
+void \hyperlink{class_command_line_processing_1_1_argv_parser_aefecca97fb5a003dbcd88c4bfe02ffc7}{reset} ()
+\item 
+const std\-::string \& \hyperlink{class_command_line_processing_1_1_argv_parser_a84a1eb0e84ac35d4fffaf6a8464b733e}{error\-Option} () const 
+\item 
+std\-::string \hyperlink{class_command_line_processing_1_1_argv_parser_aed713ca71c7f5700f0fc554d97f63d81}{parse\-Error\-Description} (Parser\-Results \-\_\-error\-\_\-code) const 
+\item 
+std\-::string \hyperlink{class_command_line_processing_1_1_argv_parser_a3de10de9b05caa7b753545ce04891866}{usage\-Description} (unsigned int \-\_\-width=80) const 
+\item 
+bool \hyperlink{class_command_line_processing_1_1_argv_parser_ab0194879d739c6e14afaa5c810f2bcf2}{define\-Option} (const std\-::string \&\-\_\-name, const std\-::string \&\-\_\-description=std\-::string(), Option\-Attributes \-\_\-attributes=No\-Option\-Attribute)
+\item 
+bool \hyperlink{class_command_line_processing_1_1_argv_parser_afd327b1fa074f9054180ffe67cb39591}{define\-Option\-Alternative} (const std\-::string \&\-\_\-original, const std\-::string \&\-\_\-alternative)
+\item 
+bool \hyperlink{class_command_line_processing_1_1_argv_parser_aff6f41358d5e0f4f2a3eb83069a1e4eb}{is\-Defined\-Option} (const std\-::string \&\-\_\-name) const 
+\item 
+bool \hyperlink{class_command_line_processing_1_1_argv_parser_aee7ea44fd5f1caac3f96915a483fbe77}{found\-Option} (const std\-::string \&\-\_\-name) const 
+\item 
+bool \hyperlink{class_command_line_processing_1_1_argv_parser_a3c8f22197ce39d35655195b6d34ee2e1}{set\-Help\-Option} (const std\-::string \&\-\_\-longname=\char`\"{}h\char`\"{}, const std\-::string \&\-\_\-shortname=\char`\"{}help\char`\"{}, const std\-::string \&\-\_\-descr=\char`\"{}\char`\"{})
+\item 
+unsigned int \hyperlink{class_command_line_processing_1_1_argv_parser_aa979f601e6ded1cf7c3f186a786147bf}{arguments} () const 
+\item 
+std\-::string \hyperlink{class_command_line_processing_1_1_argv_parser_a655af6ee5185e6289ae3f168bd259293}{argument} (unsigned int \-\_\-number) const 
+\item 
+const std\-::vector$<$ std\-::string $>$ \& \hyperlink{class_command_line_processing_1_1_argv_parser_ad1f1a4c4cab985f8a29ae52db3bf73de}{all\-Arguments} () const 
+\item 
+void \hyperlink{class_command_line_processing_1_1_argv_parser_ad0150ccee56870979c638be0dbb1ceb9}{add\-Error\-Code} (int \-\_\-code, const std\-::string \&\-\_\-descr=\char`\"{}\char`\"{})
+\item 
+void \hyperlink{class_command_line_processing_1_1_argv_parser_a2e94bfc66abdfc54fb506c75c3ce919c}{set\-Introductory\-Description} (const std\-::string \&\-\_\-descr)
+\item 
+Parser\-Results \hyperlink{class_command_line_processing_1_1_argv_parser_a13d33abe894b22b55f9c840579ed1ebc}{parse} (int \-\_\-argc, char $\ast$$\ast$\-\_\-argv)
+\item 
+std\-::string \hyperlink{class_command_line_processing_1_1_argv_parser_a333a58fc95f0ff2a7f0bda687ab8295a}{option\-Value} (const std\-::string \&\-\_\-option) const 
+\item 
+void \hyperlink{class_command_line_processing_1_1_argv_parser_ac4e236216868b31da17a5295351304fe}{reset} ()
+\item 
+const std\-::string \& \hyperlink{class_command_line_processing_1_1_argv_parser_a14a6bfdb7892c7059deb5666cf221027}{error\-Option} () const 
+\item 
+std\-::string \hyperlink{class_command_line_processing_1_1_argv_parser_a810ef61c8ec4a7d5b6401f11dcaffa4a}{parse\-Error\-Description} (Parser\-Results \-\_\-error\-\_\-code) const 
+\item 
+std\-::string \hyperlink{class_command_line_processing_1_1_argv_parser_a8e6d338f9d430522268578bc7a15a9aa}{usage\-Description} (unsigned int \-\_\-width=80) const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Provides parsing and storage of P\-O\-S\-I\-X-\/like command line arguments (argc, argv). To use this class for C\-L\-I-\/option parsing, first define a set of valid options using the \hyperlink{class_command_line_processing_1_1_argv_parser_ab0194879d739c6e14afaa5c810f2bcf2}{define\-Option()} method. An option can have several attributes\-: it can be required itself (its missing is considered as an error) and/or it can require a value. Options with optional values can be realized by defining the option to not need a value and use the syntax '--option=value' or '-\/o=value' on the command line. Every option can have different alternative labels; see \hyperlink{class_command_line_processing_1_1_argv_parser_afd327b1fa074f9054180ffe67cb39591}{define\-Option\-Alternative()}. A usage description (see \hyperlink{class_command_line_processing_1_1_argv_parser_a3de10de9b05caa7b753545ce04891866}{usage\-Description()}) can be generated from the set of defined options (also see the \hyperlink{class_command_line_processing_1_1_argv_parser_ad0150ccee56870979c638be0dbb1ceb9}{add\-Error\-Code()}, \hyperlink{class_command_line_processing_1_1_argv_parser_a2e94bfc66abdfc54fb506c75c3ce919c}{set\-Introductory\-Description()} and \hyperlink{class_command_line_processing_1_1_argv_parser_a3c8f22197ce39d35655195b6d34ee2e1}{set\-Help\-Option()} methods). \begin{DoxyNote}{Note}
+The implemented parsing algorithm requires that all options have to be given at the beginning of the command line. Everything on the commandline after the first non-\/option (or option value) is considered as an argument. 
+\end{DoxyNote}
+\begin{DoxyAttention}{Attention}
+Short option labels (single letter options) must not be digits (the option string itself not a possible value). Valid syntaxes are\-: \begin{DoxyItemize}
+\item program --long-\/option value -\/sdfgh -\/u=5 -\/i 7 --last=val arg1 arg2 arg3 Here is a small code example\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{#include}
+\textcolor{preprocessor}{}ArgvParser cmd;  \textcolor{comment}{// the command line parser}
+
+\textcolor{comment}{// init}
+cmd.setIntroductoryDescription(\textcolor{stringliteral}{"This is foo written by bar."});
+
+\textcolor{comment}{//define error codes}
+cmd.addErrorCode(0, \textcolor{stringliteral}{"Success"});
+cmd.addErrorCode(1, \textcolor{stringliteral}{"Error"});
+
+cmd.setHelpOption(\textcolor{stringliteral}{"h"}, \textcolor{stringliteral}{"help"}, \textcolor{stringliteral}{"Print this help"});
+
+cmd.defineOption(\textcolor{stringliteral}{"version"}, ArgvParser::NoOptionAttribute, \textcolor{stringliteral}{"Be verbose"});
+cmd.defineOptionAlternative(\textcolor{stringliteral}{"verbose"},\textcolor{stringliteral}{"v"});
+
+cmd.defineOption(\textcolor{stringliteral}{"foo"}, ArgvParser::OptionRequiresValue, \textcolor{stringliteral}{"Fooishness. Default value: 0"});
+
+\textcolor{comment}{// finally parse and handle return codes (display help etc...)}
+\textcolor{keywordtype}{int} result = cmd.parse(argc, argv);
+
+\textcolor{keywordflow}{if} (result != ArgvParser::NoParserError)
+  cout << cmd.parseErrorDescription(results);
+  exit(1);
+\end{DoxyCode}
+\end{DoxyItemize}
+
+\end{DoxyAttention}
+\begin{DoxyAuthor}{Author}
+Michael Hanke 
+\end{DoxyAuthor}
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{class_command_line_processing_1_1_argv_parser_af3a67d53589ab56056bbf717006be961}{\subsubsection[{anonymous enum}]{\setlength{\rightskip}{0pt plus 5cm}anonymous enum}}\label{class_command_line_processing_1_1_argv_parser_af3a67d53589ab56056bbf717006be961}
+Attributes for options. \hypertarget{class_command_line_processing_1_1_argv_parser_a1f19664f2dfa74970d5bb2bd4e1d7773}{\subsubsection[{anonymous enum}]{\setlength{\rightskip}{0pt plus 5cm}anonymous enum}}\label{class_command_line_processing_1_1_argv_parser_a1f19664f2dfa74970d5bb2bd4e1d7773}
+Return values of the parser. \hypertarget{class_command_line_processing_1_1_argv_parser_a12d56687f0894467c3c268b9f5007ecf}{\subsubsection[{anonymous enum}]{\setlength{\rightskip}{0pt plus 5cm}anonymous enum}}\label{class_command_line_processing_1_1_argv_parser_a12d56687f0894467c3c268b9f5007ecf}
+Attributes for options. \hypertarget{class_command_line_processing_1_1_argv_parser_a1de5e321f11d055e97fa0d3cb7f43b3e}{\subsubsection[{anonymous enum}]{\setlength{\rightskip}{0pt plus 5cm}anonymous enum}}\label{class_command_line_processing_1_1_argv_parser_a1de5e321f11d055e97fa0d3cb7f43b3e}
+Return values of the parser. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_command_line_processing_1_1_argv_parser_ad0150ccee56870979c638be0dbb1ceb9}{\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}!add\-Error\-Code@{add\-Error\-Code}}
+\index{add\-Error\-Code@{add\-Error\-Code}!CommandLineProcessing::ArgvParser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+\subsubsection[{add\-Error\-Code}]{\setlength{\rightskip}{0pt plus 5cm}void Command\-Line\-Processing\-::\-Argv\-Parser\-::add\-Error\-Code (
+\begin{DoxyParamCaption}
+\item[{int}]{\-\_\-code, }
+\item[{const std\-::string \&}]{\-\_\-descr = {\ttfamily \char`\"{}\char`\"{}}}
+\end{DoxyParamCaption}
+)}}\label{class_command_line_processing_1_1_argv_parser_ad0150ccee56870979c638be0dbb1ceb9}
+Add an error code and its description to the command line parser. This will do nothing more than adding an entry to the usage description. \hypertarget{class_command_line_processing_1_1_argv_parser_ad0150ccee56870979c638be0dbb1ceb9}{\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}!add\-Error\-Code@{add\-Error\-Code}}
+\index{add\-Error\-Code@{add\-Error\-Code}!CommandLineProcessing::ArgvParser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+\subsubsection[{add\-Error\-Code}]{\setlength{\rightskip}{0pt plus 5cm}void Command\-Line\-Processing\-::\-Argv\-Parser\-::add\-Error\-Code (
+\begin{DoxyParamCaption}
+\item[{int}]{\-\_\-code, }
+\item[{const std\-::string \&}]{\-\_\-descr = {\ttfamily \char`\"{}\char`\"{}}}
+\end{DoxyParamCaption}
+)}}\label{class_command_line_processing_1_1_argv_parser_ad0150ccee56870979c638be0dbb1ceb9}
+Add an error code and its description to the command line parser. This will do nothing more than adding an entry to the usage description. \hypertarget{class_command_line_processing_1_1_argv_parser_a59bfb6a90912a429100a6e05a6544b36}{\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}!all\-Arguments@{all\-Arguments}}
+\index{all\-Arguments@{all\-Arguments}!CommandLineProcessing::ArgvParser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+\subsubsection[{all\-Arguments}]{\setlength{\rightskip}{0pt plus 5cm}const vector$<$ string $>$ \& Argv\-Parser\-::all\-Arguments (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_command_line_processing_1_1_argv_parser_a59bfb6a90912a429100a6e05a6544b36}
+Get the complete argument vector. The order of the arguments in the vector is the same as on the commandline. \hypertarget{class_command_line_processing_1_1_argv_parser_ad1f1a4c4cab985f8a29ae52db3bf73de}{\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}!all\-Arguments@{all\-Arguments}}
+\index{all\-Arguments@{all\-Arguments}!CommandLineProcessing::ArgvParser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+\subsubsection[{all\-Arguments}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::vector$<$std\-::string$>$\& Command\-Line\-Processing\-::\-Argv\-Parser\-::all\-Arguments (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_command_line_processing_1_1_argv_parser_ad1f1a4c4cab985f8a29ae52db3bf73de}
+Get the complete argument vector. The order of the arguments in the vector is the same as on the commandline. \hypertarget{class_command_line_processing_1_1_argv_parser_a1cbefd19d4c8c62a203d1a1922960331}{\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}!argument@{argument}}
+\index{argument@{argument}!CommandLineProcessing::ArgvParser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+\subsubsection[{argument}]{\setlength{\rightskip}{0pt plus 5cm}string Argv\-Parser\-::argument (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{\-\_\-number}
+\end{DoxyParamCaption}
+) const}}\label{class_command_line_processing_1_1_argv_parser_a1cbefd19d4c8c62a203d1a1922960331}
+Returns the Nth argument. See \hyperlink{class_command_line_processing_1_1_argv_parser_ac982ebf837b576898661c0bfeeb487ec}{arguments()}. \begin{DoxyReturn}{Returns}
+Argument string or an empty string if there was no argument of that id. 
+\end{DoxyReturn}
+\hypertarget{class_command_line_processing_1_1_argv_parser_a655af6ee5185e6289ae3f168bd259293}{\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}!argument@{argument}}
+\index{argument@{argument}!CommandLineProcessing::ArgvParser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+\subsubsection[{argument}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Command\-Line\-Processing\-::\-Argv\-Parser\-::argument (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{\-\_\-number}
+\end{DoxyParamCaption}
+) const}}\label{class_command_line_processing_1_1_argv_parser_a655af6ee5185e6289ae3f168bd259293}
+Returns the Nth argument. See \hyperlink{class_command_line_processing_1_1_argv_parser_ac982ebf837b576898661c0bfeeb487ec}{arguments()}. \begin{DoxyReturn}{Returns}
+Argument string or an empty string if there was no argument of that id. 
+\end{DoxyReturn}
+\hypertarget{class_command_line_processing_1_1_argv_parser_aa979f601e6ded1cf7c3f186a786147bf}{\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}!arguments@{arguments}}
+\index{arguments@{arguments}!CommandLineProcessing::ArgvParser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+\subsubsection[{arguments}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Command\-Line\-Processing\-::\-Argv\-Parser\-::arguments (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_command_line_processing_1_1_argv_parser_aa979f601e6ded1cf7c3f186a786147bf}
+Returns the number of read arguments. Arguments are efined as beeing neither options nor option values and are specified at the end of the command line after all options and their values. \hypertarget{class_command_line_processing_1_1_argv_parser_ac982ebf837b576898661c0bfeeb487ec}{\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}!arguments@{arguments}}
+\index{arguments@{arguments}!CommandLineProcessing::ArgvParser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+\subsubsection[{arguments}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Argv\-Parser\-::arguments (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_command_line_processing_1_1_argv_parser_ac982ebf837b576898661c0bfeeb487ec}
+Returns the number of read arguments. Arguments are efined as beeing neither options nor option values and are specified at the end of the command line after all options and their values. \hypertarget{class_command_line_processing_1_1_argv_parser_ab0194879d739c6e14afaa5c810f2bcf2}{\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}!define\-Option@{define\-Option}}
+\index{define\-Option@{define\-Option}!CommandLineProcessing::ArgvParser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+\subsubsection[{define\-Option}]{\setlength{\rightskip}{0pt plus 5cm}bool Command\-Line\-Processing\-::\-Argv\-Parser\-::define\-Option (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{\-\_\-name, }
+\item[{const std\-::string \&}]{\-\_\-description = {\ttfamily std\-:\-:string()}, }
+\item[{Option\-Attributes}]{\-\_\-attributes = {\ttfamily NoOptionAttribute}}
+\end{DoxyParamCaption}
+)}}\label{class_command_line_processing_1_1_argv_parser_ab0194879d739c6e14afaa5c810f2bcf2}
+Defines an option with optional attributes (required, ...) and an additional (also optional) description. The description becomes part of the generated usage help that can be requested by calling the \hyperlink{class_command_line_processing_1_1_argv_parser_a3de10de9b05caa7b753545ce04891866}{usage\-Description()} method. \begin{DoxyReturn}{Returns}
+Returns F\-A\-L\-S\-E if there already is an option with this name O\-R if a short option string (length == 1) is a digit. In that case no action is peformed. 
+\end{DoxyReturn}
+\hypertarget{class_command_line_processing_1_1_argv_parser_ab0194879d739c6e14afaa5c810f2bcf2}{\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}!define\-Option@{define\-Option}}
+\index{define\-Option@{define\-Option}!CommandLineProcessing::ArgvParser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+\subsubsection[{define\-Option}]{\setlength{\rightskip}{0pt plus 5cm}bool Command\-Line\-Processing\-::\-Argv\-Parser\-::define\-Option (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{\-\_\-name, }
+\item[{const std\-::string \&}]{\-\_\-description = {\ttfamily std\-:\-:string()}, }
+\item[{Option\-Attributes}]{\-\_\-attributes = {\ttfamily NoOptionAttribute}}
+\end{DoxyParamCaption}
+)}}\label{class_command_line_processing_1_1_argv_parser_ab0194879d739c6e14afaa5c810f2bcf2}
+Defines an option with optional attributes (required, ...) and an additional (also optional) description. The description becomes part of the generated usage help that can be requested by calling the \hyperlink{class_command_line_processing_1_1_argv_parser_a3de10de9b05caa7b753545ce04891866}{usage\-Description()} method. \begin{DoxyReturn}{Returns}
+Returns F\-A\-L\-S\-E if there already is an option with this name O\-R if a short option string (length == 1) is a digit. In that case no action is peformed. 
+\end{DoxyReturn}
+\hypertarget{class_command_line_processing_1_1_argv_parser_afd327b1fa074f9054180ffe67cb39591}{\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}!define\-Option\-Alternative@{define\-Option\-Alternative}}
+\index{define\-Option\-Alternative@{define\-Option\-Alternative}!CommandLineProcessing::ArgvParser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+\subsubsection[{define\-Option\-Alternative}]{\setlength{\rightskip}{0pt plus 5cm}bool Command\-Line\-Processing\-::\-Argv\-Parser\-::define\-Option\-Alternative (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{\-\_\-original, }
+\item[{const std\-::string \&}]{\-\_\-alternative}
+\end{DoxyParamCaption}
+)}}\label{class_command_line_processing_1_1_argv_parser_afd327b1fa074f9054180ffe67cb39591}
+Define an alternative name for an option that was previously defined by \hyperlink{class_command_line_processing_1_1_argv_parser_ab0194879d739c6e14afaa5c810f2bcf2}{define\-Option()}. \begin{DoxyReturn}{Returns}
+Returns F\-A\-L\-S\-E if there already is an option with the alternative name or no option with the original name O\-R if a short option string (length == 1) is a digit. In that case no action is performed. 
+\end{DoxyReturn}
+\hypertarget{class_command_line_processing_1_1_argv_parser_afd327b1fa074f9054180ffe67cb39591}{\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}!define\-Option\-Alternative@{define\-Option\-Alternative}}
+\index{define\-Option\-Alternative@{define\-Option\-Alternative}!CommandLineProcessing::ArgvParser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+\subsubsection[{define\-Option\-Alternative}]{\setlength{\rightskip}{0pt plus 5cm}bool Command\-Line\-Processing\-::\-Argv\-Parser\-::define\-Option\-Alternative (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{\-\_\-original, }
+\item[{const std\-::string \&}]{\-\_\-alternative}
+\end{DoxyParamCaption}
+)}}\label{class_command_line_processing_1_1_argv_parser_afd327b1fa074f9054180ffe67cb39591}
+Define an alternative name for an option that was previously defined by \hyperlink{class_command_line_processing_1_1_argv_parser_ab0194879d739c6e14afaa5c810f2bcf2}{define\-Option()}. \begin{DoxyReturn}{Returns}
+Returns F\-A\-L\-S\-E if there already is an option with the alternative name or no option with the original name O\-R if a short option string (length == 1) is a digit. In that case no action is performed. 
+\end{DoxyReturn}
+\hypertarget{class_command_line_processing_1_1_argv_parser_a84a1eb0e84ac35d4fffaf6a8464b733e}{\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}!error\-Option@{error\-Option}}
+\index{error\-Option@{error\-Option}!CommandLineProcessing::ArgvParser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+\subsubsection[{error\-Option}]{\setlength{\rightskip}{0pt plus 5cm}const string \& Argv\-Parser\-::error\-Option (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_command_line_processing_1_1_argv_parser_a84a1eb0e84ac35d4fffaf6a8464b733e}
+Returns the name of the option that was responsible for a parser error. An empty string is returned if no error occured at all. \hypertarget{class_command_line_processing_1_1_argv_parser_a14a6bfdb7892c7059deb5666cf221027}{\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}!error\-Option@{error\-Option}}
+\index{error\-Option@{error\-Option}!CommandLineProcessing::ArgvParser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+\subsubsection[{error\-Option}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::string\& Command\-Line\-Processing\-::\-Argv\-Parser\-::error\-Option (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_command_line_processing_1_1_argv_parser_a14a6bfdb7892c7059deb5666cf221027}
+Returns the name of the option that was responsible for a parser error. An empty string is returned if no error occured at all. \hypertarget{class_command_line_processing_1_1_argv_parser_aee7ea44fd5f1caac3f96915a483fbe77}{\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}!found\-Option@{found\-Option}}
+\index{found\-Option@{found\-Option}!CommandLineProcessing::ArgvParser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+\subsubsection[{found\-Option}]{\setlength{\rightskip}{0pt plus 5cm}bool Command\-Line\-Processing\-::\-Argv\-Parser\-::found\-Option (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{\-\_\-name}
+\end{DoxyParamCaption}
+) const}}\label{class_command_line_processing_1_1_argv_parser_aee7ea44fd5f1caac3f96915a483fbe77}
+Returns whether \-\_\-name is an option that was found while parsing the command line arguments with the \hyperlink{class_command_line_processing_1_1_argv_parser_a1a3306fa666ee4619ecd5dfcfb2bd7ba}{parse()} method. In other word\-: This method returns true if the string is an option A\-N\-D it was given on the parsed command line. \hypertarget{class_command_line_processing_1_1_argv_parser_aee7ea44fd5f1caac3f96915a483fbe77}{\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}!found\-Option@{found\-Option}}
+\index{found\-Option@{found\-Option}!CommandLineProcessing::ArgvParser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+\subsubsection[{found\-Option}]{\setlength{\rightskip}{0pt plus 5cm}bool Command\-Line\-Processing\-::\-Argv\-Parser\-::found\-Option (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{\-\_\-name}
+\end{DoxyParamCaption}
+) const}}\label{class_command_line_processing_1_1_argv_parser_aee7ea44fd5f1caac3f96915a483fbe77}
+Returns whether \-\_\-name is an option that was found while parsing the command line arguments with the \hyperlink{class_command_line_processing_1_1_argv_parser_a1a3306fa666ee4619ecd5dfcfb2bd7ba}{parse()} method. In other word\-: This method returns true if the string is an option A\-N\-D it was given on the parsed command line. \hypertarget{class_command_line_processing_1_1_argv_parser_aff6f41358d5e0f4f2a3eb83069a1e4eb}{\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}!is\-Defined\-Option@{is\-Defined\-Option}}
+\index{is\-Defined\-Option@{is\-Defined\-Option}!CommandLineProcessing::ArgvParser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+\subsubsection[{is\-Defined\-Option}]{\setlength{\rightskip}{0pt plus 5cm}bool Command\-Line\-Processing\-::\-Argv\-Parser\-::is\-Defined\-Option (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{\-\_\-name}
+\end{DoxyParamCaption}
+) const}}\label{class_command_line_processing_1_1_argv_parser_aff6f41358d5e0f4f2a3eb83069a1e4eb}
+Returns whether \-\_\-name is a defined option. \hypertarget{class_command_line_processing_1_1_argv_parser_aff6f41358d5e0f4f2a3eb83069a1e4eb}{\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}!is\-Defined\-Option@{is\-Defined\-Option}}
+\index{is\-Defined\-Option@{is\-Defined\-Option}!CommandLineProcessing::ArgvParser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+\subsubsection[{is\-Defined\-Option}]{\setlength{\rightskip}{0pt plus 5cm}bool Command\-Line\-Processing\-::\-Argv\-Parser\-::is\-Defined\-Option (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{\-\_\-name}
+\end{DoxyParamCaption}
+) const}}\label{class_command_line_processing_1_1_argv_parser_aff6f41358d5e0f4f2a3eb83069a1e4eb}
+Returns whether \-\_\-name is a defined option. \hypertarget{class_command_line_processing_1_1_argv_parser_a333a58fc95f0ff2a7f0bda687ab8295a}{\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}!option\-Value@{option\-Value}}
+\index{option\-Value@{option\-Value}!CommandLineProcessing::ArgvParser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+\subsubsection[{option\-Value}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Command\-Line\-Processing\-::\-Argv\-Parser\-::option\-Value (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{\-\_\-option}
+\end{DoxyParamCaption}
+) const}}\label{class_command_line_processing_1_1_argv_parser_a333a58fc95f0ff2a7f0bda687ab8295a}
+Return the value of an option. \begin{DoxyReturn}{Returns}
+Value of a commandline options given by the name of the option or an empty string if there was no such option or the option required no value. 
+\end{DoxyReturn}
+\hypertarget{class_command_line_processing_1_1_argv_parser_a333a58fc95f0ff2a7f0bda687ab8295a}{\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}!option\-Value@{option\-Value}}
+\index{option\-Value@{option\-Value}!CommandLineProcessing::ArgvParser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+\subsubsection[{option\-Value}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Command\-Line\-Processing\-::\-Argv\-Parser\-::option\-Value (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{\-\_\-option}
+\end{DoxyParamCaption}
+) const}}\label{class_command_line_processing_1_1_argv_parser_a333a58fc95f0ff2a7f0bda687ab8295a}
+Return the value of an option. \begin{DoxyReturn}{Returns}
+Value of a commandline options given by the name of the option or an empty string if there was no such option or the option required no value. 
+\end{DoxyReturn}
+\hypertarget{class_command_line_processing_1_1_argv_parser_a1a3306fa666ee4619ecd5dfcfb2bd7ba}{\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}!parse@{parse}}
+\index{parse@{parse}!CommandLineProcessing::ArgvParser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+\subsubsection[{parse}]{\setlength{\rightskip}{0pt plus 5cm}Argv\-Parser\-::\-Parser\-Results Argv\-Parser\-::parse (
+\begin{DoxyParamCaption}
+\item[{int}]{\-\_\-argc, }
+\item[{char $\ast$$\ast$}]{\-\_\-argv}
+\end{DoxyParamCaption}
+)}}\label{class_command_line_processing_1_1_argv_parser_a1a3306fa666ee4619ecd5dfcfb2bd7ba}
+Parse the command line arguments for all known options and arguments. \begin{DoxyReturn}{Returns}
+Error code with parsing result. 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em No\-Parser\-Error} & Everything went fine. \\
+\hline
+{\em Parser\-Unknown\-Option} & Unknown option was found. \\
+\hline
+{\em Parser\-Missing\-Value} & A value to a given option is missing. \\
+\hline
+{\em Parser\-Option\-After\-Argument} & Option after an argument detected. All options have to given before the first argument. \\
+\hline
+{\em Parser\-Malformed\-Multiple\-Short\-Option} & Malformed short option string. \\
+\hline
+{\em Parser\-Required\-Option\-Missing} & Required option is missing. \\
+\hline
+{\em Parser\-Help\-Requested} & Help option detected. \\
+\hline
+\end{DoxyRetVals}
+\hypertarget{class_command_line_processing_1_1_argv_parser_a13d33abe894b22b55f9c840579ed1ebc}{\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}!parse@{parse}}
+\index{parse@{parse}!CommandLineProcessing::ArgvParser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+\subsubsection[{parse}]{\setlength{\rightskip}{0pt plus 5cm}Parser\-Results Command\-Line\-Processing\-::\-Argv\-Parser\-::parse (
+\begin{DoxyParamCaption}
+\item[{int}]{\-\_\-argc, }
+\item[{char $\ast$$\ast$}]{\-\_\-argv}
+\end{DoxyParamCaption}
+)}}\label{class_command_line_processing_1_1_argv_parser_a13d33abe894b22b55f9c840579ed1ebc}
+Parse the command line arguments for all known options and arguments. \begin{DoxyReturn}{Returns}
+Error code with parsing result. 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em No\-Parser\-Error} & Everything went fine. \\
+\hline
+{\em Parser\-Unknown\-Option} & Unknown option was found. \\
+\hline
+{\em Parser\-Missing\-Value} & A value to a given option is missing. \\
+\hline
+{\em Parser\-Option\-After\-Argument} & Option after an argument detected. All options have to given before the first argument. \\
+\hline
+{\em Parser\-Malformed\-Multiple\-Short\-Option} & Malformed short option string. \\
+\hline
+{\em Parser\-Required\-Option\-Missing} & Required option is missing. \\
+\hline
+{\em Parser\-Help\-Requested} & Help option detected. \\
+\hline
+\end{DoxyRetVals}
+\hypertarget{class_command_line_processing_1_1_argv_parser_a810ef61c8ec4a7d5b6401f11dcaffa4a}{\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}!parse\-Error\-Description@{parse\-Error\-Description}}
+\index{parse\-Error\-Description@{parse\-Error\-Description}!CommandLineProcessing::ArgvParser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+\subsubsection[{parse\-Error\-Description}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Command\-Line\-Processing\-::\-Argv\-Parser\-::parse\-Error\-Description (
+\begin{DoxyParamCaption}
+\item[{Parser\-Results}]{\-\_\-error\-\_\-code}
+\end{DoxyParamCaption}
+) const}}\label{class_command_line_processing_1_1_argv_parser_a810ef61c8ec4a7d5b6401f11dcaffa4a}
+This method can be used to evaluate parser error codes and generate a human-\/readable description. In case of a help request error code the usage description as returned by \hyperlink{class_command_line_processing_1_1_argv_parser_a3de10de9b05caa7b753545ce04891866}{usage\-Description()} is printed. \hypertarget{class_command_line_processing_1_1_argv_parser_aed713ca71c7f5700f0fc554d97f63d81}{\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}!parse\-Error\-Description@{parse\-Error\-Description}}
+\index{parse\-Error\-Description@{parse\-Error\-Description}!CommandLineProcessing::ArgvParser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+\subsubsection[{parse\-Error\-Description}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Argv\-Parser\-::parse\-Error\-Description (
+\begin{DoxyParamCaption}
+\item[{Parser\-Results}]{\-\_\-error\-\_\-code}
+\end{DoxyParamCaption}
+) const}}\label{class_command_line_processing_1_1_argv_parser_aed713ca71c7f5700f0fc554d97f63d81}
+This method can be used to evaluate parser error codes and generate a human-\/readable description. In case of a help request error code the usage description as returned by \hyperlink{class_command_line_processing_1_1_argv_parser_a3de10de9b05caa7b753545ce04891866}{usage\-Description()} is printed. \hypertarget{class_command_line_processing_1_1_argv_parser_ac4e236216868b31da17a5295351304fe}{\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}!reset@{reset}}
+\index{reset@{reset}!CommandLineProcessing::ArgvParser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}void Command\-Line\-Processing\-::\-Argv\-Parser\-::reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_command_line_processing_1_1_argv_parser_ac4e236216868b31da17a5295351304fe}
+Reset the parser. Call this function if you want to parse another set of command line arguments with the same parser object. \hypertarget{class_command_line_processing_1_1_argv_parser_aefecca97fb5a003dbcd88c4bfe02ffc7}{\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}!reset@{reset}}
+\index{reset@{reset}!CommandLineProcessing::ArgvParser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}void Argv\-Parser\-::reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_command_line_processing_1_1_argv_parser_aefecca97fb5a003dbcd88c4bfe02ffc7}
+Reset the parser. Call this function if you want to parse another set of command line arguments with the same parser object. \hypertarget{class_command_line_processing_1_1_argv_parser_a3c8f22197ce39d35655195b6d34ee2e1}{\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}!set\-Help\-Option@{set\-Help\-Option}}
+\index{set\-Help\-Option@{set\-Help\-Option}!CommandLineProcessing::ArgvParser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+\subsubsection[{set\-Help\-Option}]{\setlength{\rightskip}{0pt plus 5cm}bool Command\-Line\-Processing\-::\-Argv\-Parser\-::set\-Help\-Option (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{\-\_\-longname = {\ttfamily \char`\"{}h\char`\"{}}, }
+\item[{const std\-::string \&}]{\-\_\-shortname = {\ttfamily \char`\"{}help\char`\"{}}, }
+\item[{const std\-::string \&}]{\-\_\-descr = {\ttfamily \char`\"{}\char`\"{}}}
+\end{DoxyParamCaption}
+)}}\label{class_command_line_processing_1_1_argv_parser_a3c8f22197ce39d35655195b6d34ee2e1}
+Define a help option. If this option is found a special error code is returned by the parse method. \begin{DoxyAttention}{Attention}
+If this method is called twice without an intermediate call to the \hyperlink{class_command_line_processing_1_1_argv_parser_aefecca97fb5a003dbcd88c4bfe02ffc7}{reset()} method the previously set help option will remain a valid option but is not detected as the special help option and will therefore not cause the \hyperlink{class_command_line_processing_1_1_argv_parser_a1a3306fa666ee4619ecd5dfcfb2bd7ba}{parse()} method to return the special help error code. 
+\end{DoxyAttention}
+\begin{DoxyReturn}{Returns}
+Returns F\-A\-L\-S\-E if there already is an option defined that equals the short or long name. 
+\end{DoxyReturn}
+\hypertarget{class_command_line_processing_1_1_argv_parser_a3c8f22197ce39d35655195b6d34ee2e1}{\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}!set\-Help\-Option@{set\-Help\-Option}}
+\index{set\-Help\-Option@{set\-Help\-Option}!CommandLineProcessing::ArgvParser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+\subsubsection[{set\-Help\-Option}]{\setlength{\rightskip}{0pt plus 5cm}bool Command\-Line\-Processing\-::\-Argv\-Parser\-::set\-Help\-Option (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{\-\_\-longname = {\ttfamily \char`\"{}h\char`\"{}}, }
+\item[{const std\-::string \&}]{\-\_\-shortname = {\ttfamily \char`\"{}help\char`\"{}}, }
+\item[{const std\-::string \&}]{\-\_\-descr = {\ttfamily \char`\"{}\char`\"{}}}
+\end{DoxyParamCaption}
+)}}\label{class_command_line_processing_1_1_argv_parser_a3c8f22197ce39d35655195b6d34ee2e1}
+Define a help option. If this option is found a special error code is returned by the parse method. \begin{DoxyAttention}{Attention}
+If this method is called twice without an intermediate call to the \hyperlink{class_command_line_processing_1_1_argv_parser_aefecca97fb5a003dbcd88c4bfe02ffc7}{reset()} method the previously set help option will remain a valid option but is not detected as the special help option and will therefore not cause the \hyperlink{class_command_line_processing_1_1_argv_parser_a1a3306fa666ee4619ecd5dfcfb2bd7ba}{parse()} method to return the special help error code. 
+\end{DoxyAttention}
+\begin{DoxyReturn}{Returns}
+Returns F\-A\-L\-S\-E if there already is an option defined that equals the short or long name. 
+\end{DoxyReturn}
+\hypertarget{class_command_line_processing_1_1_argv_parser_a2e94bfc66abdfc54fb506c75c3ce919c}{\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}!set\-Introductory\-Description@{set\-Introductory\-Description}}
+\index{set\-Introductory\-Description@{set\-Introductory\-Description}!CommandLineProcessing::ArgvParser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+\subsubsection[{set\-Introductory\-Description}]{\setlength{\rightskip}{0pt plus 5cm}void Command\-Line\-Processing\-::\-Argv\-Parser\-::set\-Introductory\-Description (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{\-\_\-descr}
+\end{DoxyParamCaption}
+)}}\label{class_command_line_processing_1_1_argv_parser_a2e94bfc66abdfc54fb506c75c3ce919c}
+Set some string as a general description, that will be printed before the list of available options. \hypertarget{class_command_line_processing_1_1_argv_parser_a2e94bfc66abdfc54fb506c75c3ce919c}{\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}!set\-Introductory\-Description@{set\-Introductory\-Description}}
+\index{set\-Introductory\-Description@{set\-Introductory\-Description}!CommandLineProcessing::ArgvParser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+\subsubsection[{set\-Introductory\-Description}]{\setlength{\rightskip}{0pt plus 5cm}void Command\-Line\-Processing\-::\-Argv\-Parser\-::set\-Introductory\-Description (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{\-\_\-descr}
+\end{DoxyParamCaption}
+)}}\label{class_command_line_processing_1_1_argv_parser_a2e94bfc66abdfc54fb506c75c3ce919c}
+Set some string as a general description, that will be printed before the list of available options. \hypertarget{class_command_line_processing_1_1_argv_parser_a8e6d338f9d430522268578bc7a15a9aa}{\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}!usage\-Description@{usage\-Description}}
+\index{usage\-Description@{usage\-Description}!CommandLineProcessing::ArgvParser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+\subsubsection[{usage\-Description}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Command\-Line\-Processing\-::\-Argv\-Parser\-::usage\-Description (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{\-\_\-width = {\ttfamily 80}}
+\end{DoxyParamCaption}
+) const}}\label{class_command_line_processing_1_1_argv_parser_a8e6d338f9d430522268578bc7a15a9aa}
+Returns a string with the usage descriptions for all options. The description string is formated to fit into a terminal of width \-\_\-width. \hypertarget{class_command_line_processing_1_1_argv_parser_a3de10de9b05caa7b753545ce04891866}{\index{Command\-Line\-Processing\-::\-Argv\-Parser@{Command\-Line\-Processing\-::\-Argv\-Parser}!usage\-Description@{usage\-Description}}
+\index{usage\-Description@{usage\-Description}!CommandLineProcessing::ArgvParser@{Command\-Line\-Processing\-::\-Argv\-Parser}}
+\subsubsection[{usage\-Description}]{\setlength{\rightskip}{0pt plus 5cm}string Argv\-Parser\-::usage\-Description (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{\-\_\-width = {\ttfamily 80}}
+\end{DoxyParamCaption}
+) const}}\label{class_command_line_processing_1_1_argv_parser_a3de10de9b05caa7b753545ce04891866}
+Returns a string with the usage descriptions for all options. The description string is formated to fit into a terminal of width \-\_\-width. 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/dina/mashgraph/2/sse\-\_\-task\-\_\-prak\-\_\-2/bridge/include/argvparser.\-h\item 
+/home/dina/mashgraph/2/sse\-\_\-task\-\_\-prak\-\_\-2/externals/argvparser/src/argvparser.\-cpp\end{DoxyCompactItemize}

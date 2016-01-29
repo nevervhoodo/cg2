@@ -1,0 +1,113 @@
+\hypertarget{dop_8h}{\section{/home/dina/mashgraph/2/sse\-\_\-task\-\_\-prak\-\_\-2/include/dop.h File Reference}
+\label{dop_8h}\index{/home/dina/mashgraph/2/sse\-\_\-task\-\_\-prak\-\_\-2/include/dop.\-h@{/home/dina/mashgraph/2/sse\-\_\-task\-\_\-prak\-\_\-2/include/dop.\-h}}
+}
+
+
+The describtion of functions and constants of extra part of the mashgraph task.  
+
+
+{\ttfamily \#include \char`\"{}matrix.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$tuple$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include $<$xmmintrin.\-h$>$}\\*
+{\ttfamily \#include $<$immintrin.\-h$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{dop_8h_a17e0ffd9bedb97d10eddf77924fec90c}{\#define \hyperlink{dop_8h_a17e0ffd9bedb97d10eddf77924fec90c}{H\-O\-G\-S\-I\-Z\-E}~(\hyperlink{dop_8cpp_a5d0715c39fa2cd2e8754251361977d2f}{P\-I\-R\-A\-M\-I\-D\-P\-A\-R\-T\-S}$\ast$\hyperlink{mycode_8h_af6bc052e7a74799c9816534cd8d0b49f}{N\-A\-R\-G\-S}$\ast$\hyperlink{mycode_8h_a47736fb8515a7383c5db94b41eead78a}{P\-A\-R\-T\-S})}\label{dop_8h_a17e0ffd9bedb97d10eddf77924fec90c}
+
+\begin{DoxyCompactList}\small\item\em Size of the extended vector with features. \end{DoxyCompactList}\item 
+\hypertarget{dop_8h_ad8f7911b6a3865030ea18cc966a202c9}{\#define \hyperlink{dop_8h_ad8f7911b6a3865030ea18cc966a202c9}{C\-O\-L\-O\-R\-H\-O\-G\-S\-I\-Z\-E}~(\hyperlink{dop_8cpp_a87082926fd5f6d656fd8f88152d9eb28}{N\-C\-O\-L\-O\-R\-C\-E\-L\-L\-S}$\ast$\hyperlink{dop_8cpp_ad683425316571fc55dcea736f6011316}{N\-C\-O\-L\-O\-R\-S})}\label{dop_8h_ad8f7911b6a3865030ea18cc966a202c9}
+
+\begin{DoxyCompactList}\small\item\em Size of the vector with color features. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{dop_8h_a2ad732630f2665f9f4404cec637b8813}{setdopssefeature} (bool sse)
+\item 
+vector$<$ float $>$ \hyperlink{dop_8h_a10901fc7716198de2e003ddb4c918802}{piramid} (\hyperlink{class_matrix}{G\-Img} \&img)
+\item 
+vector$<$ float $>$ \hyperlink{dop_8h_a6af5688c03787a6b2aef1690f8f3f074}{colorfeatures} (B\-M\-P $\ast$bmp)
+\item 
+vector$<$ float $>$ \hyperlink{dop_8h_a618f8cc9cbf4a1a317a82855a9fa131e}{unlinearsvmkernel} (vector$<$ float $>$ \&srchog)
+\item 
+vector$<$ float $>$ \hyperlink{dop_8h_abca6a7e41d03651f9e6557ef2abc6dd0}{sseunlinearsvmkernel} (vector$<$ float $>$ \&srchog)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The describtion of functions and constants of extra part of the mashgraph task. 
+
+\subsection{Function Documentation}
+\hypertarget{dop_8h_a6af5688c03787a6b2aef1690f8f3f074}{\index{dop.\-h@{dop.\-h}!colorfeatures@{colorfeatures}}
+\index{colorfeatures@{colorfeatures}!dop.h@{dop.\-h}}
+\subsubsection[{colorfeatures}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$float$>$ colorfeatures (
+\begin{DoxyParamCaption}
+\item[{B\-M\-P $\ast$}]{bmp}
+\end{DoxyParamCaption}
+)}}\label{dop_8h_a6af5688c03787a6b2aef1690f8f3f074}
+Counts color features of the image 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em bmp} & Pointer to the processed image \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector with features 
+\end{DoxyReturn}
+\hypertarget{dop_8h_a10901fc7716198de2e003ddb4c918802}{\index{dop.\-h@{dop.\-h}!piramid@{piramid}}
+\index{piramid@{piramid}!dop.h@{dop.\-h}}
+\subsubsection[{piramid}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$float$>$ piramid (
+\begin{DoxyParamCaption}
+\item[{{\bf G\-Img} \&}]{img}
+\end{DoxyParamCaption}
+)}}\label{dop_8h_a10901fc7716198de2e003ddb4c918802}
+Counts features five times. The first one for the entire picture Then picture is devided into four cells of the same size. The next four times function counts features for four cells of the picture. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em img} & Reference to the grey image which is the matrix of floats \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the extended vector with features. Made by concatination of five vectors counted by the function 
+\end{DoxyReturn}
+\hypertarget{dop_8h_a2ad732630f2665f9f4404cec637b8813}{\index{dop.\-h@{dop.\-h}!setdopssefeature@{setdopssefeature}}
+\index{setdopssefeature@{setdopssefeature}!dop.h@{dop.\-h}}
+\subsubsection[{setdopssefeature}]{\setlength{\rightskip}{0pt plus 5cm}void setdopssefeature (
+\begin{DoxyParamCaption}
+\item[{bool}]{sse}
+\end{DoxyParamCaption}
+)}}\label{dop_8h_a2ad732630f2665f9f4404cec637b8813}
+Sets the flag ssedopconstant. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em sse} & carries the flag value. \\
+\hline
+\end{DoxyParams}
+\hypertarget{dop_8h_abca6a7e41d03651f9e6557ef2abc6dd0}{\index{dop.\-h@{dop.\-h}!sseunlinearsvmkernel@{sseunlinearsvmkernel}}
+\index{sseunlinearsvmkernel@{sseunlinearsvmkernel}!dop.h@{dop.\-h}}
+\subsubsection[{sseunlinearsvmkernel}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$float$>$ sseunlinearsvmkernel (
+\begin{DoxyParamCaption}
+\item[{vector$<$ float $>$ \&}]{srchog}
+\end{DoxyParamCaption}
+)}}\label{dop_8h_abca6a7e41d03651f9e6557ef2abc6dd0}
+Recounts vector with features for the unlinear S\-V\-M kernel using S\-S\-E. Just replaces each float feature with the several another floats got after using some strange formulas. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em srchog} & Vector of source features. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of features ready for unlinear S\-V\-M kernel. 
+\end{DoxyReturn}
+\hypertarget{dop_8h_a618f8cc9cbf4a1a317a82855a9fa131e}{\index{dop.\-h@{dop.\-h}!unlinearsvmkernel@{unlinearsvmkernel}}
+\index{unlinearsvmkernel@{unlinearsvmkernel}!dop.h@{dop.\-h}}
+\subsubsection[{unlinearsvmkernel}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$float$>$ unlinearsvmkernel (
+\begin{DoxyParamCaption}
+\item[{vector$<$ float $>$ \&}]{srchog}
+\end{DoxyParamCaption}
+)}}\label{dop_8h_a618f8cc9cbf4a1a317a82855a9fa131e}
+Recounts vector with features for the unlinear S\-V\-M kernel. Just replaces each float feature with the several another floats got after using some strange formulas. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em srchog} & Vector of source features. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of features ready for unlinear S\-V\-M kernel. 
+\end{DoxyReturn}

@@ -1,0 +1,35 @@
+Автор\-: Коваленко Диана, группа 321
+
+\section*{Структура работы }
+
+Моей задачей было реализовать подсчет признаков картинок с S\-S\-E и без
+
+За формирование вектора признаков отвечает функция \hyperlink{mycode_8cpp_a845987e96a773cd6890701a05e8938fe}{myhog()}, описанная в \hyperlink{mycode_8h}{mycode.\-h} и реализованная в \hyperlink{mycode_8cpp}{mycode.\-cpp}? которая последовательно выполняет следующее\-:
+
+
+\begin{DoxyItemize}
+\item Преобразование цветного изображения в градации серого \hyperlink{mycode_8cpp_a7359fc03c50cd3954a42f47f974dc469}{makegray()}
+\item Вычисление горизонтальных и вертикальных составляющих градиентов яркости в каждом пикселе по методу Собеля, а также вычисление модулей этих векторов и аргументов. Есть реализация с S\-S\-E и без. \hyperlink{mycode_8cpp_a8329cdf91c6f2409b5af537793c6d0da}{sobelfilter()}
+\item Вычисление гистограммы градиентов для картинки \hyperlink{mycode_8h_a9d290f33fce5aae756b3ac1ad86acaa1}{counthog()}. С использоавнием вычисления гистограммы в каждой клетке изображения \hyperlink{mycode_8cpp_a01022a402a859e09ed2bb0ae3b88ae9b}{cellhog()} и поледующей нормализацией вектора \hyperlink{mycode_8cpp_aec92cdf4db0fce10e0c7bc32c05c1f1b}{normalization()}. Есть реализация с S\-S\-E и без.
+\end{DoxyItemize}
+
+Затем, в \hyperlink{dop_8h}{dop.\-h} и \hyperlink{dop_8cpp}{dop.\-cpp} описаны и реализованы дополнительные части задания\-:
+
+
+\begin{DoxyItemize}
+\item Вычисление пирамиды дескрипторов \hyperlink{dop_8cpp_a10901fc7716198de2e003ddb4c918802}{piramid()}. Есть реализация с S\-S\-E и без.
+\item Вычисление цветовых признаков \hyperlink{dop_8cpp_a6af5688c03787a6b2aef1690f8f3f074}{colorfeatures()}
+\item Преобразование вектора признаков для нелинейного ядра S\-V\-M \hyperlink{dop_8cpp_a618f8cc9cbf4a1a317a82855a9fa131e}{unlinearsvmkernel()}. Есть реализация с S\-S\-E и без.
+\end{DoxyItemize}
+
+\section*{Что получилось с S\-S\-E и без }
+
+Для использования S\-S\-E при запуске программы нужно задать флаг --sse
+
+Время работы всей программы, включая тренировку и работу классификатора
+
+Time with no code\-: 120s Time with S\-S\-E code\-: 102s on multiclass
+
+Time with no code\-: 40s Time with S\-S\-E code\-: 35s on binary
+
+Сравнение времени работы с/без S\-S\-E фильтра Собеля в Google test на картинке Lenna.\-bmp\-: Time with no code\-: 0.\-3s Time with S\-S\-E code\-: 0.\-1s 

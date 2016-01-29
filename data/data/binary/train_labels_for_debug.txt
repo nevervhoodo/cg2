@@ -1,0 +1,10 @@
+train/airplanes/image_0003.bmp 1
+train/airplanes/image_0004.bmp 1
+train/airplanes/image_0006.bmp 1
+train/airplanes/image_0007.bmp 1
+train/airplanes/image_0012.bmp 1
+train/background/image_0001.bmp 2
+train/background/image_0002.bmp 2
+train/background/image_0005.bmp 2
+train/background/image_0007.bmp 2
+train/background/image_0008.bmp 2

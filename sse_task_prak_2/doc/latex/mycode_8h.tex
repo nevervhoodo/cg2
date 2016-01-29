@@ -1,0 +1,132 @@
+\hypertarget{mycode_8h}{\section{/home/dina/mashgraph/2/sse\-\_\-task\-\_\-prak\-\_\-2/include/mycode.h File Reference}
+\label{mycode_8h}\index{/home/dina/mashgraph/2/sse\-\_\-task\-\_\-prak\-\_\-2/include/mycode.\-h@{/home/dina/mashgraph/2/sse\-\_\-task\-\_\-prak\-\_\-2/include/mycode.\-h}}
+}
+
+
+The describtion of functions and constants of base part.  
+
+
+{\ttfamily \#include \char`\"{}Easy\-B\-M\-P.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}matrix.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$tuple$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include $<$xmmintrin.\-h$>$}\\*
+{\ttfamily \#include $<$immintrin.\-h$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{mycode_8h_aa1ea86a5999ec71d294445f46322f2a7}{\#define \hyperlink{mycode_8h_aa1ea86a5999ec71d294445f46322f2a7}{X\-P\-A\-R\-T\-S}~10}\label{mycode_8h_aa1ea86a5999ec71d294445f46322f2a7}
+
+\begin{DoxyCompactList}\small\item\em Each picture is devided into X\-P\-A\-R\-T\-S horizontal parts for counting feature vector. \end{DoxyCompactList}\item 
+\hypertarget{mycode_8h_ae277516452d60fc3263f6c21ff7c1ba0}{\#define \hyperlink{mycode_8h_ae277516452d60fc3263f6c21ff7c1ba0}{Y\-P\-A\-R\-T\-S}~6}\label{mycode_8h_ae277516452d60fc3263f6c21ff7c1ba0}
+
+\begin{DoxyCompactList}\small\item\em Each picture is devided into Y\-P\-A\-R\-T\-S vertical parts for counting feature vector. \end{DoxyCompactList}\item 
+\hypertarget{mycode_8h_a47736fb8515a7383c5db94b41eead78a}{\#define \hyperlink{mycode_8h_a47736fb8515a7383c5db94b41eead78a}{P\-A\-R\-T\-S}~(\hyperlink{mycode_8h_aa1ea86a5999ec71d294445f46322f2a7}{X\-P\-A\-R\-T\-S}$\ast$\hyperlink{mycode_8h_ae277516452d60fc3263f6c21ff7c1ba0}{Y\-P\-A\-R\-T\-S})}\label{mycode_8h_a47736fb8515a7383c5db94b41eead78a}
+
+\begin{DoxyCompactList}\small\item\em Number of parts for counting features. \end{DoxyCompactList}\item 
+\hypertarget{mycode_8h_af6bc052e7a74799c9816534cd8d0b49f}{\#define \hyperlink{mycode_8h_af6bc052e7a74799c9816534cd8d0b49f}{N\-A\-R\-G\-S}~16}\label{mycode_8h_af6bc052e7a74799c9816534cd8d0b49f}
+
+\begin{DoxyCompactList}\small\item\em Number of sectors of the circle to sort argument values of gradient function. \end{DoxyCompactList}\item 
+\hypertarget{mycode_8h_a9c7b069fee3c8184e14a7de8e5da2dc6}{\#define \hyperlink{mycode_8h_a9c7b069fee3c8184e14a7de8e5da2dc6}{P\-R\-E\-C\-I\-S\-I\-O\-N}~0.\-00001}\label{mycode_8h_a9c7b069fee3c8184e14a7de8e5da2dc6}
+
+\begin{DoxyCompactList}\small\item\em The precision of countings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{mycode_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{typedef unsigned int {\bfseries uint}}\label{mycode_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}
+
+\item 
+\hypertarget{mycode_8h_a1eb46a06b477c136c31496560592580f}{typedef \hyperlink{class_matrix}{Matrix}$<$ float $>$ {\bfseries G\-Img}}\label{mycode_8h_a1eb46a06b477c136c31496560592580f}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{mycode_8h_a9997fd6ff13e3ada8b415052972cf17d}{checkconstants} (bool sse)
+\item 
+vector$<$ float $>$ \hyperlink{mycode_8h_a845987e96a773cd6890701a05e8938fe}{myhog} (B\-M\-P $\ast$m)
+\item 
+std\-::vector$<$ float $>$ \hyperlink{mycode_8h_a9d290f33fce5aae756b3ac1ad86acaa1}{counthog} (std\-::pair$<$ \hyperlink{class_matrix}{G\-Img}, \hyperlink{class_matrix}{G\-Img} $>$ got)
+\item 
+std\-::pair$<$ \hyperlink{class_matrix}{G\-Img}, \hyperlink{class_matrix}{G\-Img} $>$ \hyperlink{mycode_8h_aeac5df29a43f3f1471ac31e78d1d022c}{sobelfilter} (\hyperlink{class_matrix}{G\-Img} \&src)
+\item 
+std\-::pair$<$ \hyperlink{class_matrix}{G\-Img}, \hyperlink{class_matrix}{G\-Img} $>$ \hyperlink{mycode_8h_a60945a802a2b24e29881e0d579347b0e}{ssesobelfilter} (\hyperlink{class_matrix}{G\-Img} \&src)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The describtion of functions and constants of base part. 
+
+\subsection{Function Documentation}
+\hypertarget{mycode_8h_a9997fd6ff13e3ada8b415052972cf17d}{\index{mycode.\-h@{mycode.\-h}!checkconstants@{checkconstants}}
+\index{checkconstants@{checkconstants}!mycode.h@{mycode.\-h}}
+\subsubsection[{checkconstants}]{\setlength{\rightskip}{0pt plus 5cm}void checkconstants (
+\begin{DoxyParamCaption}
+\item[{bool}]{sse}
+\end{DoxyParamCaption}
+)}}\label{mycode_8h_a9997fd6ff13e3ada8b415052972cf17d}
+Decides if the constants are correct and sets the flag sseconstant. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em sse} & carries the flag value \\
+\hline
+\end{DoxyParams}
+\hypertarget{mycode_8h_a9d290f33fce5aae756b3ac1ad86acaa1}{\index{mycode.\-h@{mycode.\-h}!counthog@{counthog}}
+\index{counthog@{counthog}!mycode.h@{mycode.\-h}}
+\subsubsection[{counthog}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$float$>$ counthog (
+\begin{DoxyParamCaption}
+\item[{std\-::pair$<$ {\bf G\-Img}, {\bf G\-Img} $>$}]{got}
+\end{DoxyParamCaption}
+)}}\label{mycode_8h_a9d290f33fce5aae756b3ac1ad86acaa1}
+Rules the process of fomation of counting gradient and converting info into features 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em got} & Pair with two Matrixes with floats. The first one is the matrix of modules of gradient of pixels. The second one is the matrix of arguments of gradient of pixels. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns ready vector of base features 
+\end{DoxyReturn}
+\hypertarget{mycode_8h_a845987e96a773cd6890701a05e8938fe}{\index{mycode.\-h@{mycode.\-h}!myhog@{myhog}}
+\index{myhog@{myhog}!mycode.h@{mycode.\-h}}
+\subsubsection[{myhog}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$float$>$ myhog (
+\begin{DoxyParamCaption}
+\item[{B\-M\-P $\ast$}]{m}
+\end{DoxyParamCaption}
+)}}\label{mycode_8h_a845987e96a773cd6890701a05e8938fe}
+Rules the process of counting features. Make all working step by step. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em m} & Pointer to the image we got \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns ready vector of features 
+\end{DoxyReturn}
+\hypertarget{mycode_8h_aeac5df29a43f3f1471ac31e78d1d022c}{\index{mycode.\-h@{mycode.\-h}!sobelfilter@{sobelfilter}}
+\index{sobelfilter@{sobelfilter}!mycode.h@{mycode.\-h}}
+\subsubsection[{sobelfilter}]{\setlength{\rightskip}{0pt plus 5cm}std\-::pair$<${\bf G\-Img}, {\bf G\-Img}$>$ sobelfilter (
+\begin{DoxyParamCaption}
+\item[{{\bf G\-Img} \&}]{src}
+\end{DoxyParamCaption}
+)}}\label{mycode_8h_aeac5df29a43f3f1471ac31e78d1d022c}
+Counts gradient 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em src} & Reference to the matrix of floats made by convering coloured image into grey one. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns pair of matrixes. The first one is the matrix of modules of gradient of pixels. The second one is the matrix of arguments of gradient of pixels. 
+\end{DoxyReturn}
+\hypertarget{mycode_8h_a60945a802a2b24e29881e0d579347b0e}{\index{mycode.\-h@{mycode.\-h}!ssesobelfilter@{ssesobelfilter}}
+\index{ssesobelfilter@{ssesobelfilter}!mycode.h@{mycode.\-h}}
+\subsubsection[{ssesobelfilter}]{\setlength{\rightskip}{0pt plus 5cm}std\-::pair$<${\bf G\-Img}, {\bf G\-Img}$>$ ssesobelfilter (
+\begin{DoxyParamCaption}
+\item[{{\bf G\-Img} \&}]{src}
+\end{DoxyParamCaption}
+)}}\label{mycode_8h_a60945a802a2b24e29881e0d579347b0e}
+Counts gradient using S\-S\-E 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em src} & Reference to the matrix of floats made by convering coloured image into grey one. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns pair of matrixes. The first one is the matrix of modules of gradient of pixels. The second one is the matrix of arguments of gradient of pixels. 
+\end{DoxyReturn}
